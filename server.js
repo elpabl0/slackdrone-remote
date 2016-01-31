@@ -14,6 +14,20 @@ io.on('connection', function(socket){
   });
 });
 
+app.route({
+    method:'POST',
+    path: '/webhook',
+    handler: function(request, reply){
+      const payload = request.payload;
+      const slashCommand = payload.command.substr('1');
+
+      commands.push(slashCommand);
+      io.sockets.emit('commands', commands);
+
+      reply();
+    }
+  });
+
 server.listen(port, function(){
   console.log('listening on '+ port);
 });
