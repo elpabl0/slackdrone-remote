@@ -22,7 +22,7 @@ app.route({
       const slashCommand = payload.command.substr('1');
 
       commands.push(slashCommand);
-      io.sockets.emit('commands', commands);
+      io.sockets.emit('chat message', commands);
 
       reply();
     }
