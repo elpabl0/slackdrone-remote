@@ -14,19 +14,15 @@ io.on('connection', function(socket){
   });
 });
 
-app.route({
-    method:'POST',
-    path: '/webhook',
-    handler: function(request, reply){
-      const payload = request.payload;
-      const slashCommand = payload.command.substr('1');
+app.post('/webhook', function(request, response){
+  const payload = request.payload;
+  const slashCommand = payload.command.substr('1');
 
-      commands.push(slashCommand);
-      io.sockets.emit('chat message', commands);
+  commands.push(slashCommand);
+  io.sockets.emit('chat message', commands);
+  response.send(request.payload);    // echo the result back
 
-      reply();
-    }
-  });
+});
 
 server.listen(port, function(){
   console.log('listening on '+ port);
