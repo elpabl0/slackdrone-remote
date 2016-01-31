@@ -15,10 +15,10 @@ io.on('connection', function(socket){
 });
 
 app.post('/webhook', function(request, response){
-  const payload = request.payload;
+  const payload = request.body.text;
   //const slashCommand = payload.command.substr('1');
-  commands.push(payload);
-  io.sockets.emit('chat message', commands);
+  //commands.push(payload);
+  io.sockets.emit('chat message', payload);
   response.send(request.payload);    // echo the result back
 
 });
