@@ -16,9 +16,8 @@ io.on('connection', function(socket){
 
 app.post('/webhook', function(request, response){
   const payload = request.payload;
-  const slashCommand = payload.command.substr('1');
-
-  commands.push(slashCommand);
+  //const slashCommand = payload.command.substr('1');
+  commands.push(payload);
   io.sockets.emit('chat message', commands);
   response.send(request.payload);    // echo the result back
 
