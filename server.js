@@ -23,10 +23,10 @@ io.on('connection', function(socket){
 
 app.post('/webhook', function(req, res){
   var payload = req.body;
-  io.sockets.emit('payload', payload);
-  console.log("Payload = " + payload.text);
-  res.end("Message Received...");
 
+  io.sockets.emit('payload', payload);
+  console.log("Payload = " + payload.text + " : " + payload.user_name);
+  res.end("Message Received...");
 });
 
 server.listen(port, function(){

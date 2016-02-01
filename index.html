@@ -27,9 +27,10 @@
         socket.emit('payload', $('#m').val());
         $('#m').val('');
         return false;
-       }); .
+       });
       socket.on('payload', function(msg){
-        $('#messages').append($('<li>').text(msg.text + " : " + msg.user_name));
+        var payload = msg;
+        $('#messages').append($('<li>').text(payload.text + " : " + payload.user_name));
       });
     </script>
   </body>
