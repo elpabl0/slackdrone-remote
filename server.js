@@ -15,9 +15,9 @@ app.get('/webhook', function(req, res){
 });
 
 io.on('connection', function(socket){
-  socket.on('chat message', function(msg)
+  socket.on('payload', function(msg)
   {
-    io.emit('chat message', msg);
+    io.emit('payload', msg);
   });
 });
 
@@ -26,8 +26,9 @@ app.post('/webhook', function(req, res){
 
   //const slashCommand = payload.command.substr('1');
   //commands.push(payload);
-  io.sockets.emit('chat message', payload.text +" - "+ payload.user_name);
-  console.log("Payload = "+payload.text);
+  io.sockets.emit('payload', payload.text);
+  io.sockets.emit('user', payload.user_name);
+  console.log("Payload = " + payload.text);
   res.end("Message Received...");
 
     //var botPayload = {
