@@ -26,8 +26,8 @@ app.post('/webhook', function(req, res){
 
   //const slashCommand = payload.command.substr('1');
   //commands.push(payload);
-  io.sockets.emit('chat message', payload.text + payload.user_id);
-  console.log("Payload = "+payload);
+  io.sockets.emit('chat message', payload.text +" - "+ payload.user_name);
+  console.log("Payload = "+payload.text);
   res.end("Message Received...");
 
     //var botPayload = {
