@@ -22,13 +22,13 @@ io.on('connection', function(socket){
 });
 
 app.post('/webhook', function(req, res){
-  var payload = req.body.text;
+  var payload = req.body;
 
   //const slashCommand = payload.command.substr('1');
   //commands.push(payload);
-  io.sockets.emit('chat message', payload);
+  io.sockets.emit('chat message', payload.text + payload.user_id);
   console.log("Payload = "+payload);
-  res.end("yes");
+  res.end("Message Received...");
 
     //var botPayload = {
     //  text : 'Hello ' + userName + ', it worked!'
