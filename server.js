@@ -23,22 +23,9 @@ io.on('connection', function(socket){
 
 app.post('/webhook', function(req, res){
   var payload = req.body;
-  //const slashCommand = payload.command.substr('1');
-  //commands.push(payload);
   io.sockets.emit('payload', payload);
   console.log("Payload = " + payload.text);
   res.end("Message Received...");
-
-    //var botPayload = {
-    //  text : 'Hello ' + userName + ', it worked!'
-    //};
-   //if (userName !== 'slackbot') {
-  //   return response.status(200).json(botPayload);
-   //} else {
-    // return response.status(200).end();
-   //}
-  //
-  //response.send(request);    // echo the result back
 
 });
 
