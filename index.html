@@ -23,14 +23,13 @@
     <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
     <script>
       var socket = io();
-      $('form').submit(function(){
-        socket.emit('payload', $('#m').val());
-        $('#m').val('');
-        return false;
-      }); .
-
+      //$('form').submit(function(){
+      //  socket.emit('payload', $('#m').val());
+      //  $('#m').val('');
+      //  return false;
+      // }); .
       socket.on('payload', function(msg){
-        $('#messages').append($('<li>').text(msg.text));
+        $('#messages').append($('<li>').text(msg.text + " : " + msg.user_name));
       });
     </script>
   </body>

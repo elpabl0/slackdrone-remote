@@ -23,11 +23,9 @@ io.on('connection', function(socket){
 
 app.post('/webhook', function(req, res){
   var payload = req.body;
-
   //const slashCommand = payload.command.substr('1');
   //commands.push(payload);
-  io.sockets.emit('payload', payload.text);
-  io.sockets.emit('user', payload.user_name);
+  io.sockets.emit('payload', payload);
   console.log("Payload = " + payload.text);
   res.end("Message Received...");
 
